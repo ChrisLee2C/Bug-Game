@@ -18,10 +18,14 @@ public class FruitSpawner : MonoBehaviour {
 	void Start () {
         timer = GameObject.FindWithTag("Timer");
         timerScript = timer.GetComponent<Timer>();
-        if (timerScript)
+    }
+
+    void Update()
+    {
+        if (timerScript.isGameStart == true && timerScript.gameStarted == false)
         {
-            Debug.Log("Yes");
             StartCoroutine(SpawnFruits());
+            timerScript.gameStarted = true;
         }
     }
 

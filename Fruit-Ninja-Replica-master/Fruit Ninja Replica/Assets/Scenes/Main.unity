@@ -765,6 +765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   remainingTime: 120
   isGameStart: 0
+  gameStarted: 0
 --- !u!1 &756845771
 GameObject:
   m_ObjectHideFlags: 0
