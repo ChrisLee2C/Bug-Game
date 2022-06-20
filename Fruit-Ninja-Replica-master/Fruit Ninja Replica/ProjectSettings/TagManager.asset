@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Blade
   - Timer
+  - Score
   layers:
   - Default
   - TransparentFX

@@ -27,6 +27,7 @@ public class FruitSpawner : MonoBehaviour {
             StartCoroutine(SpawnFruits());
             timerScript.gameStarted = true;
         }
+
     }
 
     IEnumerator SpawnFruits ()
@@ -41,6 +42,10 @@ public class FruitSpawner : MonoBehaviour {
 
 			GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
 			Destroy(spawnedFruit, 5f);
+            if(timerScript.isGameStart == false)
+            {
+                break;
+            }
 		}
 	}
 	

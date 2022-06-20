@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour {
 
-	public GameObject fruitSlicedPrefab;
-	public float startForce = 15f;
+    public float startForce = 15f;
+    public GameObject fruitSlicedPrefab;
+    private GameObject score;
+    private Score scoreScript;
 
 	Rigidbody2D rb;
 
@@ -13,6 +15,8 @@ public class Fruit : MonoBehaviour {
 	{
 		rb = GetComponent<Rigidbody2D>();
 		rb.AddForce(transform.up * startForce, ForceMode2D.Impulse);
+        score = GameObject.FindWithTag("Score");
+        scoreScript = score.GetComponent<Score>();
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
@@ -26,6 +30,7 @@ public class Fruit : MonoBehaviour {
 			GameObject slicedFruit = Instantiate(fruitSlicedPrefab, transform.position, rotation);
 			Destroy(slicedFruit, 3f);
 			Destroy(gameObject);
+            scoreScript.score += 1;
 		}
 	}
 
