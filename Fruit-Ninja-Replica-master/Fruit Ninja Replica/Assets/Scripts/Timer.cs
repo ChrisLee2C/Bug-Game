@@ -27,7 +27,7 @@ public class Timer : MonoBehaviour
     {
         if(isGameStart == true)
         {
-            txt.text = "Remaining Time: " + remainingTime;
+            txt.text = "Remaining Time: " + Convert.ToInt32(remainingTime);
             remainingTime -= 1f*Time.deltaTime;
             if(remainingTime <= 0)
             {
