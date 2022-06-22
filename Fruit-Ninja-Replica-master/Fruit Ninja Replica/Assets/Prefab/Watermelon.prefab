@@ -172,6 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1edee5293fda0d44b0f32416bc0bc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startForce: 13
   fruitSlicedPrefab: {fileID: 1051390302531860, guid: ca05a4d9e03cfc240aef1c9a84d3c9d6,
     type: 3}
-  startForce: 13
