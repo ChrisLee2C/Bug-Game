@@ -6,6 +6,7 @@ public class Fruit : MonoBehaviour {
 
     public float startForce = 15f;
     public GameObject fruitSlicedPrefab;
+    private AudioSource audioSource;
     private GameObject score;
     private Score scoreScript;
 
@@ -13,6 +14,7 @@ public class Fruit : MonoBehaviour {
 
 	void Start ()
 	{
+        audioSource = GameObject.FindWithTag("SliceSoundEffect").GetComponent<AudioSource>();
 		rb = GetComponent<Rigidbody2D>();
 		rb.AddForce(transform.up * startForce, ForceMode2D.Impulse);
         score = GameObject.FindWithTag("Score");
@@ -28,7 +30,8 @@ public class Fruit : MonoBehaviour {
 			Quaternion rotation = Quaternion.LookRotation(direction);
 
 			GameObject slicedFruit = Instantiate(fruitSlicedPrefab, transform.position, rotation);
-			Destroy(slicedFruit, 3f);
+            audioSource.Play();
+            Destroy(slicedFruit, 3f);
 			Destroy(gameObject);
             scoreScript.score += 1;
 		}
