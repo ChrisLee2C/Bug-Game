@@ -9,6 +9,8 @@ TagManager:
   - Score
   - SliceSoundEffect
   - EndGameText
+  - Pests
+  - BeneficialInsects
   layers:
   - Default
   - TransparentFX

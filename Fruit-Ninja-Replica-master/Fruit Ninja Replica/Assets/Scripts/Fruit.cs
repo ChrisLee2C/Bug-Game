@@ -33,8 +33,15 @@ public class Fruit : MonoBehaviour {
             audioSource.Play();
             Destroy(slicedFruit, 3f);
 			Destroy(gameObject);
-            scoreScript.score += 1;
-		}
+            if (this.CompareTag("Pests"))
+            {
+                scoreScript.score += 1;
+            }
+            else if (this.CompareTag("BeneficialInsects"))
+            {
+                scoreScript.score -= 1;
+            }
+        }
 	}
 
 }

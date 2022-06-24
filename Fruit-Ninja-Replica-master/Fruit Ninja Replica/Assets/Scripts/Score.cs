@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public int score = 0;
-    public int targetScore = 20;
     public GameObject textGameObject;
+    public GameObject scoreGamObject;
+    private TargetScore targetScoreScript;
     private bool pass;
     private Timer timerScript;
     private Text txt;
@@ -17,15 +18,16 @@ public class Score : MonoBehaviour
     {
         txt = GetComponent<Text>();
         timerScript = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
+        targetScoreScript = scoreGamObject.GetComponent<TargetScore>();
     }
 
     IEnumerator endGame()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         if (pass)
         {
             textGameObject.GetComponent<Text>().color = Color.green;
-            textGameObject.GetComponent<Text>().text = "You Passed!";
+            textGameObject.GetComponent<Text>().text = "Congratulations!";
         }
         else
         {
@@ -37,11 +39,15 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        txt.text = "Score: " + score;
+        if(score <= 0)
+        {
+            score = 0;
+        }
+        txt.text = "Current Score: " + score;
         if(timerScript.isGameStart != true && timerScript.remainingTime == 0)
         {
             textGameObject.SetActive(true);
-            if(score < targetScore)
+            if(score < targetScoreScript.targetScore)
             {
                 pass = false;
             }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour {
-
-	public GameObject fruitPrefab;
-    public GameObject[] GoodBugs;
-    public GameObject[] Pests;
+    
+    public GameObject[] beneficialInsects;
+    public GameObject[] pests;
     public Transform[] spawnPoints;
+    public int ratio = 9;
     private GameObject timer;
     private Timer timerScript;
 
@@ -40,8 +40,18 @@ public class FruitSpawner : MonoBehaviour {
 			int spawnIndex = Random.Range(0, spawnPoints.Length);
 			Transform spawnPoint = spawnPoints[spawnIndex];
 
-			GameObject spawnedFruit = Instantiate(fruitPrefab, spawnPoint.position, spawnPoint.rotation);
-			Destroy(spawnedFruit, 5f);
+            if (Random.Range(0,10) >= ratio)
+            {
+                int beneficialInsectIndex = Random.Range(0, beneficialInsects.Length);
+                GameObject spawnedBug = Instantiate(beneficialInsects[beneficialInsectIndex], spawnPoint.position, spawnPoint.rotation);
+                Destroy(spawnedBug, 5f);
+            }
+            else
+            {
+                int pestIndex = Random.Range(0, pests.Length);
+                GameObject spawnedBug = Instantiate(pests[pestIndex], spawnPoint.position, spawnPoint.rotation);
+                Destroy(spawnedBug, 5f);
+            }
             if(timerScript.isGameStart == false)
             {
                 break;
