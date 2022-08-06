@@ -1,2 +1,2 @@
 # CINTEC
-Thanks Brackeys
+Thanks Brackeys and Simon
